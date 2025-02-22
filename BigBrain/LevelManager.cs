@@ -1,3 +1,7 @@
+/*
+*  Author: Jesse Turner
+*  Date: 2-22-2025
+*/
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
