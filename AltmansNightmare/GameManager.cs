@@ -31,21 +31,30 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        // Increment time by the time passed since the last frame
         time += Time.deltaTime;
-
+    
+        // If the time exceeds the wave time, proceed to the next wave and reset time
         if (time > waveTime)
         {
-            NextWave();
-            time = 0;
+            NextWave();  // Call the NextWave method to start the next wave
+            time = 0;    // Reset the time counter to 0 for the next wave
         }
-
+    
+        // Check if the count of items divided by the power-up frequency exceeds the number of power-ups given
         if(countDisplay.count / powerUpFrequency > powerUpsGiven)
         {
+            // Randomly select a power-up from the available power-ups
             int powerUpSelected = Random.Range(0, powerUpSpawner.powerUpForPrefab.Length);
+            
+            // Spawn the selected power-up
             powerUpSpawner.SpawnPowerUp(powerUpSelected);
+    
+            // Increment the count of power-ups given to avoid giving more than the limit
             powerUpsGiven += 1;
         }
     }
+
     private void NextWave()
     {
         if(index < waves.Length )
